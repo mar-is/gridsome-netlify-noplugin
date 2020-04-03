@@ -8,8 +8,8 @@
 	<body>
 		<!-- Include the script that builds the page and powers Netlify CMS -->
 		<script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-		<script src="index.js" type="module"></script>
+		<script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 		<script>
 			if (window.netlifyIdentity) {
 				window.netlifyIdentity.on("init", user => {
@@ -20,6 +20,41 @@
 					}
 				});
 			}
+		</script>
+		<script>
+			const IdControl = createClass({
+				getInitialState: function() {
+					return {};
+				},
+				componentDidMount: function() {
+					// If this widget doesn't have an ID yet we create one using the UUID package
+					if (!this.props.value) {
+						this.props.onChange(uuidv4());
+					}
+				},
+				handleChange() {
+					this.props.onChange(uuidv4());
+				},
+				render: function() {
+					return h("p", null, `${this.props.value}`);
+				}
+			});
+
+			/**
+			 * Create the preview widget, this will display the widgets value in the NetlifyCMS preview pane
+			 */
+			const IdPreview = createClass({
+				getInitialState: function() {
+					console.log(this.props);
+					return {};
+				},
+				render: function() {
+					return window.h("p", null, `ID: ${this.props.value}`);
+				}
+			});
+
+			// Register the widget. This lets NetlifyCMS know about our custom widget
+			CMS.registerWidget("id", IdControl, IdPreview);
 		</script>
 	</body>
 </html>
