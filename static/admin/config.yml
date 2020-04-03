@@ -25,7 +25,7 @@ collections:
           collection: "authors",
           searchFields: ["fullName", "id"],
           displayFields: ["fullName", "id"],
-          valueField: "fullName",
+          valueField: "id",
         }
 
   - name: "authors"
