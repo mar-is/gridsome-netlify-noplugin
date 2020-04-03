@@ -30,7 +30,6 @@ collections:
 
   - name: "authors"
     label: "Authors"
-    widget: list
     folder: "contents/authors"
     create: true
     slug: "{{slug}}"
