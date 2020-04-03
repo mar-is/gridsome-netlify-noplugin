@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: "static/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "contents/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      #- { label: "ID", name: "id", widget: "id" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Abstract", name: "abstract", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "date" }
+      - { label: "Content", name: "content", widget: "markdown" }
+      - { label: "Featured Image", "name": "image", widget: "image" }
+      - {
+          label: "Author",
+          name: "author",
+          widget: "relation",
+          collection: "authors",
+          searchFields: ["name"],
+          displayFields: ["name"],
+          valueField: "name",
+        }
+
+  - name: "authors"
+    label: "Authors"
+    widget: list
+    folder: "contents/authors"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      # - { label: "ID", name: "id", widget: "id" }
+      - { label: "Name", name: "fullName", widget: "string" }
+      - { label: "Age", name: "age", widget: "string" }
