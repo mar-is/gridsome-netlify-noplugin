@@ -36,6 +36,6 @@ collections:
     slug: "{{slug}}"
     identifier_field: "fullName"
     fields:
-      # - { label: "ID", name: "id", widget: "id" }
+      - { label: "ID", name: "id", widget: "id" }
       - { label: "Name", name: "fullName", widget: "string" }
       - { label: "Age", name: "age", widget: "string" }
