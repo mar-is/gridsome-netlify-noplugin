@@ -23,9 +23,9 @@ collections:
           name: "author",
           widget: "relation",
           collection: "authors",
-          searchFields: ["name"],
-          displayFields: ["name"],
-          valueField: "name",
+          searchFields: ["fullName"],
+          displayFields: ["fullName"],
+          valueField: "fullName",
         }
 
   - name: "authors"
@@ -34,7 +34,7 @@ collections:
     folder: "contents/authors"
     create: true
     slug: "{{slug}}"
-    identifier_field: "name"
+    identifier_field: "fullName"
     fields:
       # - { label: "ID", name: "id", widget: "id" }
       - { label: "Name", name: "fullName", widget: "string" }
