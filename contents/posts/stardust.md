@@ -14,5 +14,5 @@ content: >-
   hide from the victim, the law, and the consequences! That's why... I will
   judge you myself!
 image: uploads/photo-1584322467067-3e45df888faa.jpg
-author: Jotaro Kujo
+author: Weather Report
 ---
